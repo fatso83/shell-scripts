@@ -16,7 +16,7 @@ function sed_ERE_flag() {
     fi
 }
 
-print() {
+function print() {
     printf "%-15s %-6s %-s\n" $1 $2 $3
 }
 

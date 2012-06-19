@@ -1,0 +1,51 @@
+#!/bin/bash
+#author: Carl-Erik Kopseng carlerik@gmail.com
+#date 2011-07-09
+
+restart() {
+	stop
+	start
+}
+
+stop() {
+	echo "Stopping nrpe"
+	/usr/bin/killall /usr/bin/nrpe
+}
+
+start() {
+	if [[ "x$(pidof nrpe)" != "x" ]]; then
+		echo "Found running instance"
+		stop
+	fi
+
+	echo "Starting nrpe"
+	/usr/bin/nrpe -c  /etc/nagios/nrpe.cfg -d
+	status
+}
+
+status() {
+	if [[ "x$(pidof nrpe)" != "x" ]]; then
+		echo -n "NRPE is running"
+		if /usr/lib/nagios/plugins/check_nrpe  -H localhost > /dev/null; then
+			echo " and responding to calls over SSL"
+		else
+			echo " but NOT responding to calls!"
+		fi
+	else
+		echo "Found no running instance of NRPE"
+	fi
+
+}
+
+usage() {
+	echo "Usage: $1 [stop|start|status|restart|usage]"
+}
+
+
+if (($# == 0)); then
+	usage
+	exit
+else 
+	$1
+fi
+

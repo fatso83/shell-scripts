@@ -1,10 +1,7 @@
 #!/bin/bash
-#@author:	carl-erik.kopseng
+#@author:	carlerik <at> gmail.com
 #@date: 	2011-04-12 20:28
-#latest version can be retrieved from Cicero's subversion server like this:
-#wget --http-user=ole.nordmann --http-password=secretPassword --no-check-certificate https://sourcebox.cicero.no/svn/repos/cicero/sandbox/carl-erik/shell-utils/glassfish_memory_usage.sh
 
-#JAVA_HOME=
 if [[ ! -e $JAVA_HOME/bin/java ]] ; then 
 	JAVA_HOME="/etc/java-config-2/current-system-vm"
 fi

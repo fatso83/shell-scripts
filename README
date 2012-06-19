@@ -7,6 +7,6 @@ These are scriptlets that I have found useful and worth reusing in little utilit
 
 Other useful libraries might be used:
 -------------------------------------
-    - log4sh by Kate Walsh
-    - shUnit2 by Kate Walsh
-    - shflags by Kate Walsh
+    - log4sh by Kate Ward
+    - shUnit2 by Kate Ward
+    - shflags by Kate Ward

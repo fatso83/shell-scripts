@@ -22,13 +22,16 @@ function print() {
 
 lines=$(ps  -A -o "ruser,pid,command" |grep domains|sed -n $(sed_ERE_flag) 's/([a-z_-]+)[ \t]+([0-9]+).*glassfish\/domains\/([a-z0-9]+).*/\3 \2 \1/p')
 
-print DOMAIN PID USER
-IFS=$'\n'
-for line in $lines;  do
-    domain=$(echo $line | cut -d' ' -f1)
-    pid=$(echo $line | cut   -d' ' -f2)
-    user=$(echo $line | cut  -d' ' -f3)
+if [[ x$lines  == x  ]]; then
+    echo "No running glassfish instance could be found"
+else
+    print DOMAIN PID USER
+    IFS=$'\n'
+    for line in $lines;  do
+        domain=$(echo $line | cut -d' ' -f1)
+        pid=$(echo $line | cut   -d' ' -f2)
+        user=$(echo $line | cut  -d' ' -f3)
 
-    print $domain $pid $user
-done
-
+        print $domain $pid $user
+    done
+fi

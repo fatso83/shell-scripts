@@ -1,6 +1,7 @@
 #!/bin/bash
-#author: Carl-Erik Kopseng carlerik@gmail.com
-#date 2011-07-09
+# Init script to stop and start the Nagios Reporting agent
+# author: Carl-Erik Kopseng carlerik@gmail.com
+# date 2011-07-09
 
 restart() {
 	stop
